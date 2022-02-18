@@ -12,7 +12,12 @@ HEADERS += \
 SOURCES += \
     modulesplugin.cpp
 
-DISTFILES += qmldir $$OUT_PWD/plugins.qmltypes
+DISTFILES += qmldir \
+            $$OUT_PWD/plugins.qmltypes \
+            CustomText.qml \
+            Prompt.qml \
+            Histogram.qml \
+            CustomButton.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR

@@ -1,4 +1,11 @@
 module Modules
 plugin modulesplugin
 classname ModulesPlugin
-typeinfo plugins.qmltype
+typeinfo plugins.qmltypes
+CustomText 1.0 CustomText.qml
+CustomButton 1.0 CustomButton.qml
+Histogram 1.0 Histogram.qml
+Prompt 1.0 Prompt.qml
+CustomButton 1.0 CustomButton.qml
+CircleProgressBar 1.0 CircleProgressBar.qml
+CustomTextBlock 1.0 CustomTextBlock.qml
