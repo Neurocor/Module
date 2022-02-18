@@ -1,0 +1,4 @@
+module Modules
+plugin modulesplugin
+classname ModulesPlugin
+typeinfo plugins.qmltype
