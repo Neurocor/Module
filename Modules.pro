@@ -17,7 +17,10 @@ DISTFILES += qmldir \
             CustomText.qml \
             Prompt.qml \
             Histogram.qml \
-            CustomButton.qml
+            CustomButton.qml \
+            CircleProgressBar.qml \
+            CustomTextBlock.qml \
+            ButtonBlock.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
