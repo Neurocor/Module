@@ -1,17 +1,17 @@
 include(../common_qml.pri)
 
-TARGET = modulesplugin
+TARGET = moduleplugin
 TARGET = $$qtLibraryTarget($$TARGET)
 
-QML_IMPORT_NAME = Modules
+QML_IMPORT_NAME = Module
 QML_IMPORT_VERSION = 1
 
 
 HEADERS += \
-    modulesplugin.h
+    moduleplugin.h
 
 SOURCES += \
-    modulesplugin.cpp
+    moduleplugin.cpp
 
 DISTFILES += qmldir \
             *.qml \
