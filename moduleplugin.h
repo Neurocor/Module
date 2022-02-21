@@ -1,9 +1,9 @@
-#ifndef MODULESPLUGIN_H
-#define MODULESPLUGIN_H
+#ifndef MODULEPLUGIN_H
+#define MODULEPLUGIN_H
 
 #include <QQmlEngineExtensionPlugin>
 
-class ModulesPlugin : public QQmlEngineExtensionPlugin
+class ModulePlugin : public QQmlEngineExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID QQmlEngineExtensionInterface_iid)

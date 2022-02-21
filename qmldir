@@ -1,6 +1,6 @@
-module Modules
-plugin modulesplugin
-classname ModulesPlugin
+module Module
+plugin moduleplugin
+classname ModulePlugin
 typeinfo plugins.qmltypes
 CustomText 1.0 CustomText.qml
 CustomTextBlock 1.0 CustomTextBlock.qml
