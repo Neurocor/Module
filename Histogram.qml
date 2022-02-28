@@ -12,53 +12,55 @@ Item {
     property string title: ""
     property string titleFontName: currentFont.name
     property color titleColor: "white"
-    property real titleSize: height/3
+    property real titleSize: height / 3
 
-//    visible: values.length
-
-    Canvas{
+    //    visible: values.length
+    Canvas {
 
         id: graph
 
         width: parent.width
-        height: parent.height *60/100
+        height: parent.height * 60 / 100
 
-        function max(v1,v2){
-            return (v1>v2) ? v1 : v2;
-        }
+        //        function max(v1, v2) {
+        //            return (v1 > v2) ? v1 : v2
+        //        }
+        function findMaxHeight(values) {
+            if (!values.length || !values[0].length)
+                return 0
 
-        function findMaxHeight(values){
-            if(!values.length|| !values[0].length)
-                return 0;
-
-            let tmpMax=values[0][1];
-            for(let val of values){
-                tmpMax=max(tmpMax,val[1]);
+            let tmpMax = values[0][1]
+            //            for (let val in values) {
+            //                tmpMax = Math.max(tmpMax, val[1])
+            //            }
+            for (var i = 0; i < values.length; ++i) {
+                tmpMax = Math.max(tmpMax, values[i][1])
             }
-            return tmpMax;
+            return tmpMax
         }
 
-        function calcWidth(values){
-            let tmpW=0;
-            for(let val of values){
-                tmpW+=val[0];
+        function calcWidth(values) {
+            let tmpW = 0
+            //            for (let val in values) {
+            //                tmpW += val[0]
+            //            }
+            for (var i = 0; i < values.length; ++i) {
+                tmpW += values[i][0]
             }
-            return tmpW;
+
+            return tmpW
         }
 
-
-
-        function drawRects(ctx,values)
-        {
+        function drawRects(ctx, values) {
             let currentPos = 0
 
-            let maxH=findMaxHeight(values)
+            let maxH = findMaxHeight(values)
 
-            let genW=calcWidth(values)
+            let genW = calcWidth(values)
 
-            for(let val of values){
+            for (let val in values) {
 
-                let curIndex = values.indexOf(val);
+                let curIndex = values.indexOf(val)
 
                 ctx.beginPath()
                 if (root.activeHist > 0 && root.activeHist <= values.length
@@ -75,19 +77,17 @@ Item {
 
                 let currentHeight = 0
 
-                if(maxH){
-                    currentHeight=val[1] * height / maxH * 90 / 100 + height * 5 / 100
-                }else{
-                    currentHeight=height*95/100
+                if (maxH) {
+                    currentHeight = val[1] * height / maxH * 90 / 100 + height * 5 / 100
+                } else {
+                    currentHeight = height * 95 / 100
                 }
-
 
                 ctx.rect((curIndex + 1) * width * padding / 100 + currentPos,
                          height - currentHeight, currentWidth, currentHeight)
                 ctx.fill()
                 ctx.closePath()
                 currentPos += currentWidth
-
             }
         }
 
@@ -101,19 +101,18 @@ Item {
         }
     }
 
-    CustomText{
+    CustomText {
 
-        id:text
+        id: text
 
         width: parent.width
-        height: parent.height*40/100
+        height: parent.height * 40 / 100
 
         anchors.top: graph.bottom
 
         text: title
         color: titleColor
-        font.pixelSize: height*4/10
-
+        font.pixelSize: height * 4 / 10
     }
 
     onActiveHistChanged: {
@@ -124,6 +123,6 @@ Item {
         graph.requestPaint()
     }
     onValuesChanged: {
-         graph.requestPaint()
+        graph.requestPaint()
     }
 }
