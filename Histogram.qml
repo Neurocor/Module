@@ -5,14 +5,16 @@ Item {
 
     property var values: []
     property real padding: 0
-    property int activeHist: -1 // -1: All enabled; 0: All Active; val: Active val Hist
+    property int activeHist: -1 // -1: All enabled;  val(0:size-1): Active val Hist; val.size: All Active
     property color enableColor: "#aeafb1"
     property color activeColor: "#ff4b00"
 
-    property string title: ""
+    property string title
     property string titleFontName: currentFont.name
     property color titleColor: "white"
     property real titleSize: height / 3
+
+    required property real maxHeight
 
     //    visible: values.length
     Canvas {
@@ -57,24 +59,26 @@ Item {
 
             let currentPos = 0
 
-            let maxH = findMaxHeight(values)
+            //            let maxH = findMaxHeight(values)
+            let maxH = maxHeight
 
             let genW = calcWidth(values)
 
-            for (let val in values) {
+            //            for (let val in values) {
+            for (var curIndex = 0; curIndex < values.length; ++curIndex) {
 
-                let curIndex = values.indexOf(val)
+                const val = values[curIndex]
 
                 ctx.beginPath()
-                if (root.activeHist > 0 && root.activeHist <= values.length
-                        && curIndex + 1 == root.activeHist) {
+
+                if (root.activeHist >= 0 && root.activeHist < values.length
+                        && curIndex === root.activeHist) {
                     ctx.fillStyle = root.activeColor
-                } else if (root.activeHist == 0) {
+                } else if (root.activeHist === values.length) {
                     ctx.fillStyle = root.activeColor
                 } else {
                     ctx.fillStyle = root.enableColor
                 }
-
                 let currentWidth = width * val[0]
                     * (100 - root.padding * (values.length + 1)) / genW / 100
 
