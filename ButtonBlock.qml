@@ -1,8 +1,8 @@
-import QtQuick 2.15
-
+import QtQuick
+import QtQuick.Controls
 
 GridView {
-    id:grid
+    id: root
 
     required property int startValue
     required property int endValue
@@ -14,23 +14,25 @@ GridView {
     property var currentType: CustomButton.NoType
     readonly property var currentChangeMode: CustomButton.Value
 
-//    property bool disableWhenClicked: false
-
-    cellWidth: width/colsCount
-    cellHeight: height/rowsCount
+    property var manager
+    //    property bool disableWhenClicked: false
+    cellWidth: width / colsCount
+    cellHeight: height / rowsCount
     model: elmsCount
-    delegate:Item{
-        width: grid.cellWidth
-        height: grid.cellHeight
-        CustomButton{
-            width: Math.min(parent.width*grid.scaleVal,parent.height*grid.scaleVal)
-            height: Math.min(parent.width*grid.scaleVal,parent.height*grid.scaleVal)
+    delegate: Item {
+        width: root.cellWidth
+        height: root.cellHeight
+        CustomButton {
+            width: Math.min(parent.width * root.scaleVal,
+                            parent.height * root.scaleVal)
+            height: Math.min(parent.width * root.scaleVal,
+                             parent.height * root.scaleVal)
             anchors.centerIn: parent
-            title: index*step
-            currentType:grid.currentType
-            currentChangeMode:grid.currentChangeMode
+            title: index * step
+            currentType: grid.currentType
+            currentChangeMode: grid.currentChangeMode
             enabled: grid.enabled
+            manager: root.manager
         }
     }
 }
-
