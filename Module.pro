@@ -16,13 +16,6 @@ SOURCES += \
 DISTFILES += qmldir \
             *.qml \
             $$OUT_PWD/plugins.qmltypes
-#            CustomText.qml \
-#            Prompt.qml \
-#            Histogram.qml \
-#            CustomButton.qml \
-#            CircleProgressBar.qml \
-#            CustomTextBlock.qml \
-#            ButtonBlock.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR

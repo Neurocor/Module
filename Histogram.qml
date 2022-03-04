@@ -52,6 +52,9 @@ Item {
         }
 
         function drawRects(ctx, values) {
+            ctx.reset()
+            ctx.save()
+
             let currentPos = 0
 
             let maxH = findMaxHeight(values)
@@ -89,15 +92,12 @@ Item {
                 ctx.closePath()
                 currentPos += currentWidth
             }
+            ctx.restore()
         }
 
         onPaint: {
-            let ctx = getContext("2d")
-            ctx.reset()
-            ctx.save()
 
-            drawRects(ctx, root.values)
-            ctx.restore()
+            drawRects(getContext("2d"), root.values)
         }
     }
 
