@@ -23,15 +23,17 @@ GridView {
         width: root.cellWidth
         height: root.cellHeight
         CustomButton {
-            width: Math.min(parent.width * root.scaleVal,
-                            parent.height * root.scaleVal)
-            height: Math.min(parent.width * root.scaleVal,
-                             parent.height * root.scaleVal)
+            //            width: Math.min(parent.width * root.scaleVal,
+            //                            parent.height * root.scaleVal)
+            //            height: Math.min(parent.width * root.scaleVal,
+            //                             parent.height * root.scaleVal)
+            width: Math.min(parent.width, parent.height) * root.scaleVal
+            height: width
             anchors.centerIn: parent
             title: index * step
-            currentType: grid.currentType
-            currentChangeMode: grid.currentChangeMode
-            enabled: grid.enabled
+            currentType: root.currentType
+            currentChangeMode: root.currentChangeMode
+            enabled: root.enabled
             manager: root.manager
         }
     }
