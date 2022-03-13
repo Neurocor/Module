@@ -14,8 +14,16 @@ SOURCES += \
     moduleplugin.cpp
 
 DISTFILES += qmldir \
-            *.qml \
             $$OUT_PWD/plugins.qmltypes
+
+unix:!macx: DISTFILES += *.qml
+else: DISTFILES += CustomText.qml \
+                    CustomTextBlock.qml \
+                    CustomButton.qml \
+                    Histogram.qml \
+                    Prompt.qml \
+                    ButtonBlock.qml \
+                    CircleProgressBar.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
