@@ -3,6 +3,8 @@ import QtQuick 2.15
 Item {
     id: root
 
+    signal clicked
+
     enum Side {
         Left,
         Center,
@@ -83,6 +85,7 @@ Item {
     MouseArea {
         id: mouse
         anchors.fill: parent
+        onClicked: root.clicked()
     }
 }
 
