@@ -14,7 +14,8 @@ SOURCES += \
     moduleplugin.cpp
 
 DISTFILES += qmldir \
-            $$OUT_PWD/plugins.qmltypes
+            $$OUT_PWD/plugins.qmltypes \
+            Table.qml
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
