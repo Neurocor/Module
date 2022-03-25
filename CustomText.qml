@@ -6,6 +6,8 @@ Text {
 
     color: "white"
 
+    property alias textSize: root.font.pixelSize
+
     verticalAlignment: CustomText.AlignVCenter
     horizontalAlignment: CustomText.AlignHCenter
 }

@@ -6,37 +6,55 @@ Item {
     id: root
 
     property alias model: tableView.model
+    property int currentIndex
 
-    ColumnLayout {
-        id: tableCont
-        anchors.fill: parent
-        anchors.centerIn: parent
-        HorizontalHeaderView {
-            Layout.fillWidth: true
-            id: horizontalHeader
-            syncView: tableView
-        }
-        RowLayout {
-            Layout.fillHeight: true
-            Layout.fillWidth: true
+    signal cellClicked(int row, int col)
 
-            TableView {
-                id: tableView
-                Layout.fillWidth: true
-                Layout.fillHeight: true
+    HorizontalHeaderView {
+        //        width: parent.width
+        id: horizontalHeader
+        syncView: tableView
+        anchors.right: tableView.right
+    }
 
-                clip: true
+    VerticalHeaderView {
+        //        height: parent.height
+        id: verticalHeader
+        syncView: tableView
+        anchors.top: tableView.top
+    }
 
-                delegate: ItemDelegate {
+    TableView {
+        id: tableView
 
-                    implicitHeight: tableView.height / 4
-                    implicitWidth: tableView.width / 4
-                    Text {
-                        id: txt
-                        anchors.centerIn: parent
-                        text: model.display
-                    }
-                }
+        clip: true
+
+        width: parent.width - verticalHeader.width
+        height: parent.height - horizontalHeader.height
+
+        anchors.top: horizontalHeader.bottom
+        anchors.left: verticalHeader.right
+
+        delegate: ItemDelegate {
+
+            implicitHeight: tableView.height / 4
+            implicitWidth: tableView.width / tableView.model.columnCount()
+            contentItem: CustomText {
+                id: txt
+                anchors.centerIn: parent
+                text: model.display
+                textSize: 24
+            }
+
+            background: Rectangle {
+                visible: model.index % tableView.model.rowCount(
+                             ) == currentIndex
+                color: "#aeafb1"
+            }
+
+            onClicked: {
+                let curRow = model.index % tableView.model.rowCount()
+                cellClicked(curRow, -1)
             }
         }
     }
