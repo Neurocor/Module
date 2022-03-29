@@ -42,7 +42,6 @@ Button {
     hoverEnabled: false
 
     contentItem: CustomText {
-        id: btnText
         text: title
         color: titleColor
         font.pixelSize: titleSize

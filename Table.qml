@@ -5,10 +5,16 @@ import QtQuick.Layouts 2.15
 Item {
     id: root
 
+    property alias table: tableView
     property alias model: tableView.model
     property int currentIndex
 
     signal cellClicked(int row, int col)
+
+    function updateData(row, val) {
+        //        tableView.model.display = val
+        tableView.model.speed = val
+    }
 
     HorizontalHeaderView {
         //        width: parent.width
@@ -40,10 +46,11 @@ Item {
             implicitHeight: tableView.height / 4
             implicitWidth: tableView.width / tableView.model.columnCount()
             contentItem: CustomText {
-                id: txt
                 anchors.centerIn: parent
-                text: model.display
+                text: model.value
                 textSize: 24
+
+                onTextChanged: text => model.value = parseFloat(text)
             }
 
             background: Rectangle {
@@ -53,8 +60,9 @@ Item {
             }
 
             onClicked: {
-                let curRow = model.index % tableView.model.rowCount()
-                cellClicked(curRow, -1)
+                let curRow = parseInt(model.index % tableView.model.rowCount())
+                let curCol = parseInt(model.index / tableView.model.rowCount())
+                cellClicked(curRow, curCol)
             }
         }
     }

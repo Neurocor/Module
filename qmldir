@@ -10,3 +10,4 @@ Prompt 1.0 Prompt.qml
 ButtonBlock 1.0 ButtonBlock.qml
 CircleProgressBar 1.0 CircleProgressBar.qml
 Table 1.0 Table.qml
+CustomSlider 1.0 CustomSlider.qml

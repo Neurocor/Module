@@ -1,7 +1,7 @@
 include(../common_qml.pri)
 
 TARGET = moduleplugin
-TARGET = $$qtLibraryTarget($$TARGET)
+TARGET = $$qt5LibraryTarget($$TARGET)
 
 QML_IMPORT_NAME = Module
 QML_IMPORT_VERSION = 1
@@ -14,7 +14,8 @@ SOURCES += \
     moduleplugin.cpp
 
 DISTFILES += qmldir \
-            $$OUT_PWD/plugins.qmltypes
+            $$OUT_PWD/plugins.qmltypes \
+            CustomSlider.qml
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
@@ -24,7 +25,8 @@ else: DISTFILES += CustomText.qml \
                     Prompt.qml \
                     ButtonBlock.qml \
                     CircleProgressBar.qml \
-                    Table.qml
+                    Table.qml \
+                    CustomSlider.qml
 
 
 
