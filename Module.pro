@@ -15,6 +15,7 @@ SOURCES += \
 
 DISTFILES += qmldir \
             $$OUT_PWD/plugins.qmltypes \
+            CustomDelegate.qml \
             CustomSlider.qml
 
 unix:!macx: DISTFILES += *.qml
@@ -26,11 +27,8 @@ else: DISTFILES += CustomText.qml \
                     ButtonBlock.qml \
                     CircleProgressBar.qml \
                     Table.qml \
-                    CustomSlider.qml
-
-
+                    CustomSlider.qml \
+                    CustomDelegate.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
-
-
