@@ -15,6 +15,7 @@ GridView {
     readonly property var currentChangeMode: CustomButton.Value
 
     property var manager
+
     //    property bool disableWhenClicked: false
     cellWidth: width / colsCount
     cellHeight: height / rowsCount
