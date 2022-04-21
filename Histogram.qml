@@ -5,7 +5,6 @@ Item {
 
     property var values: []
     property real padding: 0
-    property real maxHeight
     property int activeHist: -1 // -1: All enabled; 0: All Active; val: Active val Hist
     property color enableColor: "#aeafb1"
     property color activeColor: "#ff4b00"
