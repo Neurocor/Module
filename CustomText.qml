@@ -1,13 +1,35 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 
-Text {
+Item {
 
     id: root
 
-    color: "white"
+    implicitHeight: txt.implicitHeight
+    implicitWidth: txt.implicitWidth
 
-    property alias textSize: root.font.pixelSize
+    property color color: "white"
+    property string text
+    property alias font: txt.font
+    property alias leftPadding: txt.leftPadding
+    property alias elide: txt.elide
 
-    verticalAlignment: CustomText.AlignVCenter
-    horizontalAlignment: CustomText.AlignHCenter
+    Text {
+        id: txt
+
+        anchors.centerIn: parent
+
+        text: root.text
+        color: root.color
+
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+    }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.66}
+}
+##^##*/
+

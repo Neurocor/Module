@@ -15,8 +15,6 @@ SOURCES += \
 
 DISTFILES += qmldir \
             $$OUT_PWD/plugins.qmltypes \
-            CustomDelegate.qml \
-            CustomSlider.qml
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
@@ -28,7 +26,10 @@ else: DISTFILES += CustomText.qml \
                     CircleProgressBar.qml \
                     Table.qml \
                     CustomSlider.qml \
-                    CustomDelegate.qml
+                    CustomItemDelegate.qml \
+                    CustomSlider.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
+
+#TRANSLATIONS += module_ru.qm

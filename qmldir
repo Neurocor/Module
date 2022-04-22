@@ -6,9 +6,9 @@ CustomText 1.0 CustomText.qml
 CustomTextBlock 1.0 CustomTextBlock.qml
 CustomButton 1.0 CustomButton.qml
 Histogram 1.0 Histogram.qml
-Prompt 1.0 Prompt.qml
 ButtonBlock 1.0 ButtonBlock.qml
 CircleProgressBar 1.0 CircleProgressBar.qml
 Table 1.0 Table.qml
 CustomSlider 1.0 CustomSlider.qml
-CustomDelegate 1.0 CustomDelegate.qml
+CustomItemDelegate 1.0 CustomItemDelegate.qml
+CustomRadioDelegate 1.0 CustomRadioDelegate.qml

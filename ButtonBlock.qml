@@ -11,10 +11,6 @@ GridView {
     readonly property int elmsCount: colsCount * rowsCount
     readonly property int step: (endValue - startValue) / (elmsCount - 1)
     property real scaleVal: 1
-    property var currentType: CustomButton.NoType
-    readonly property var currentChangeMode: CustomButton.Value
-
-    property var manager
 
     //    property bool disableWhenClicked: false
     cellWidth: width / colsCount
@@ -31,11 +27,8 @@ GridView {
             width: Math.min(parent.width, parent.height) * root.scaleVal
             height: width
             anchors.centerIn: parent
-            title: index * step
-            currentType: root.currentType
-            currentChangeMode: root.currentChangeMode
+            text: index * step
             enabled: root.enabled
-            manager: root.manager
         }
     }
 }

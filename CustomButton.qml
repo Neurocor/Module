@@ -1,144 +1,84 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 
-Button {
+Item {
 
     id: root
 
-    enum Type {
-        NoType,
-        Incline,
-        Speed,
-        Other
-    }
-    enum ChangeMode {
-        NoChangeMode,
-        Increase,
-        Decrease,
-        Value
-    }
+    property alias text: btn.text
+    property color textColor: "white"
 
-    property var currentType: Button.NoType
-    property var currentChangeMode: Button.NoChangeMode
-
-    property string title
-    property string titleFontName: currentFont.name
-    property color titleColor: "white"
-    property real titleSize: height / 2
-
-    property bool disableWhenClicked: false
+    property real ratioHtoW: 1
 
     property int borderWidth: 1
     property color borderColor: "#8f8f8f"
 
     property color enabledColor: "#0085b8"
-    property color disabledColor: "#2f2f2f"
+    //    property color disabledColor: "#2f2f2f"
+    property color disabledColor: "transparent"
     property color clickedColor: "#00729D"
     //    property color clickedColor: "#ff4b00"
     property color checkedColor: enabledColor
 
-    property var manager: null
+    signal checkedChanged
+    signal clicked
 
-    hoverEnabled: false
+    property alias font: btn.font
+    property alias checkable: btn.checkable
+    property alias autoRepeat: btn.autoRepeat
 
-    contentItem: CustomText {
-        text: title
-        color: titleColor
-        font.pixelSize: titleSize
-    }
+    implicitHeight: btn.implicitHeight
+    implicitWidth: btn.implicitWidth
 
-    background: Rectangle {
-        color: if (enabled) {
-                   if (checkable) {
-                       if (checked) {
-                           checkedColor
+    Button {
+
+        id: btn
+
+        hoverEnabled: false
+
+        anchors.centerIn: parent
+
+        width: Math.min(parent.width, parent.height / root.ratioHtoW)
+        height: Math.min(parent.height, parent.width * root.ratioHtoW)
+
+        contentItem: CustomText {
+            text: btn.text
+            color: root.textColor
+            font: btn.font
+        }
+
+        background: Rectangle {
+
+            implicitWidth: 100
+            implicitHeight: 40
+
+            color: if (btn.enabled) {
+                       if (btn.checkable) {
+                           if (btn.checked) {
+                               root.checkedColor
+                           } else {
+                               root.disabledColor
+                           }
+                       } else if (btn.down) {
+                           root.clickedColor
                        } else {
-                           disabledColor
+                           root.enabledColor
                        }
                    } else {
-                       if (down) {
-                           clickedColor
-                       } else {
-                           enabledColor
-                       }
+                       root.disabledColor
                    }
-               } else {
-                   disabledColor
-               }
-        radius: width
-        border.width: borderWidth
-        border.color: borderColor
-    }
-
-    Timer {
-        id: longPressTimer
-        repeat: true
-        onTriggered: {
-            changeValue(currentType, currentChangeMode)
-            if (interval > 100)
-                interval -= 50
+            radius: height / 2
+            border.width: root.borderWidth
+            border.color: root.borderColor
         }
-    }
 
-    onPressedChanged: {
-        longPressTimer.running = pressed
-        longPressTimer.interval = 200
-    }
-
-    onClicked: {
-
-        if (!manager)
-            return
-
-        changeValue(currentType, currentChangeMode)
-        //        if(disableWhenClicked)
-        //            enabled = false;
-    }
-
-    function changeSpeed(manager, changeMode) {
-
-        switch (changeMode) {
-        case CustomButton.Increase:
-            manager.speed += 0.2
-            break
-        case CustomButton.Decrease:
-            manager.speed -= 0.2
-            break
-        case CustomButton.Value:
-            manager.speed = parseFloat(btnText.text)
-            break
-        default:
-            break
-        }
-    }
-
-    function changeIncline(manager, changeMode) {
-        switch (changeMode) {
-        case CustomButton.Increase:
-            ++manager.incline
-            break
-        case CustomButton.Decrease:
-            --manager.incline
-            break
-        case CustomButton.Value:
-            manager.incline = parseFloat(btnText.text)
-            break
-        default:
-            break
-        }
-    }
-
-    function changeValue(type, changeMode) {
-
-        switch (type) {
-        case CustomButton.Incline:
-            changeIncline(manager, changeMode)
-            break
-        case CustomButton.Speed:
-            changeSpeed(manager, changeMode)
-            break
-        default:
-            break
-        }
+        onClicked: root.clicked()
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;autoSize:true;height:480;width:640}
+}
+##^##*/
+

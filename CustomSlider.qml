@@ -4,18 +4,15 @@ import QtQuick.Controls 2.15
 Slider {
     id: root
 
-    implicitWidth: Math.max(implicitBackgroundWidth + leftInset + rightInset,
-                            implicitHandleWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(implicitBackgroundHeight + topInset + bottomInset,
-                             implicitHandleHeight + topPadding + bottomPadding)
-
     property color handleColor: "#ff4b00"
+    property color disableColor: "#2f2f2f"
     property color fillColor: handleColor
     property color railColor: "#9f9f9f"
 
-    property real handleRadius: 25
-    property real fillWidth: 20
+    property real handleRadius: 55
+    property real fillWidth: 30
     property real railWidth: 1
+    snapMode: Slider.SnapAlways
 
     background: Rectangle {
 
@@ -26,28 +23,30 @@ Slider {
         implicitHeight: 1
 
         width: root.availableWidth
-        height: railWidth
+        height: root.railWidth
 
         radius: height / 2
-        color: railColor
+        color: root.railColor
 
         Rectangle {
 
             width: root.visualPosition * parent.width
-            height: fillWidth
+            height: root.fillWidth
 
             anchors.verticalCenter: parent.verticalCenter
-            color: fillColor
+            color: root.fillColor
             radius: height / 2
+            border.color: "white"
         }
     }
 
     handle: Rectangle {
         x: root.leftPadding + root.visualPosition * (root.availableWidth - width)
         y: root.topPadding + (root.availableHeight - height) / 2
-        implicitWidth: handleRadius * 2
+        implicitWidth: root.handleRadius * 2
         implicitHeight: implicitWidth
         radius: height / 2
-        color: handleColor
+        color: enabled ? root.handleColor : root.disableColor
+        border.color: "white"
     }
 }
