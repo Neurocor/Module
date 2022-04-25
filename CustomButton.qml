@@ -38,8 +38,8 @@ Item {
 
         anchors.centerIn: parent
 
-        width: Math.min(parent.width, parent.height / root.ratioHtoW)
-        height: Math.min(parent.height, parent.width * root.ratioHtoW)
+        width: Math.min(root.width, root.height / root.ratioHtoW)
+        height: Math.min(root.height, root.width * root.ratioHtoW)
 
         contentItem: CustomText {
             text: btn.text
@@ -67,7 +67,7 @@ Item {
                    } else {
                        root.disabledColor
                    }
-            radius: height / 2
+            radius: Math.min(height, width) / 2
             border.width: root.borderWidth
             border.color: root.borderColor
         }
