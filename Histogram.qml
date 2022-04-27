@@ -10,7 +10,6 @@ Item {
     property color activeColor: "#ff4b00"
 
     property string title
-    property string titleFontName: currentFont.name
     property color titleColor: "white"
     property real titleSize: height / 3
 

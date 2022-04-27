@@ -1,5 +1,6 @@
 import QtQuick 2.15
-Item{
+
+Item {
 
     id: root
 
@@ -10,8 +11,8 @@ Item{
     property string dimensionText
 
     property int titleSize: 12
-    readonly property int valueSize: titleSize*4
-    readonly property int dimensionSize: titleSize*2
+    readonly property int valueSize: titleSize * 4
+    readonly property int dimensionSize: titleSize * 2
     property int padding: 5
 
     property color titleColor: "white"
@@ -26,46 +27,45 @@ Item{
 
     property bool isEnabled: true
 
-    property string fontFamily: currentFont.name
-
-    height: (titleContain.height+valuesContain.height)+(titleContain.height+valuesContain.height)*padding/50
+    height: (titleContain.height + valuesContain.height)
+            + (titleContain.height + valuesContain.height) * padding / 50
 
     onValueChanged: {
 
-        valueID.text=root.value.toFixed(1)
+        valueID.text = root.value.toFixed(1)
     }
 
-    Item{
-        id:titleContain
+    Item {
+        id: titleContain
         height: titleSize
         width: parent.width
 
-        CustomText{
+        CustomText {
 
             id: titleId
-            text:titleText
+            text: titleText
             font.bold: titleBold
             font.pixelSize: titleSize
             anchors.centerIn: parent
             color: isEnabled ? titleColor : disabledColor
         }
     }
-    Row{
-        id:valuesContain
-        height: Math.max(valueSize,dimensionSize)
-        anchors.top:titleContain.bottom
+    Row {
+        id: valuesContain
+        height: Math.max(valueSize, dimensionSize)
+        anchors.top: titleContain.bottom
         anchors.horizontalCenter: titleContain.horizontalCenter
 
-        CustomText{
+        CustomText {
 
             id: valueID
-            text: isNumber ? value: valueText
+            text: isNumber ? value : valueText
             font.bold: valueBold
             font.pixelSize: valueSize
             color: isEnabled ? valueColor : disabledColor
         }
 
-        CustomText{
+        CustomText {
 
             id: dimensionID
             text: dimensionText
@@ -74,7 +74,5 @@ Item{
             font.pixelSize: dimensionSize
             color: isEnabled ? dimensionColor : disabledColor
         }
-
     }
-
 }

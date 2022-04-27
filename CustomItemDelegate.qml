@@ -5,9 +5,8 @@ ItemDelegate {
 
     id: root
 
-    font.pixelSize: 24
-
     property bool inActiveRow: false
+    property bool highlightOnDown: false
 
     contentItem: Text {
         color: "white"
@@ -19,7 +18,7 @@ ItemDelegate {
     }
 
     background: Rectangle {
-        visible: inActiveRow || down
+        visible: inActiveRow ^ (highlightOnDown ? down : false)
         color: "#515151"
     }
 }

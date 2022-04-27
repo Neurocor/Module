@@ -9,6 +9,7 @@ Item {
     property color textColor: "white"
 
     property real ratioHtoW: 1
+    property bool isRounded: true
 
     property int borderWidth: 1
     property color borderColor: "#8f8f8f"
@@ -23,20 +24,22 @@ Item {
     signal checkedChanged
     signal clicked
 
-    property alias font: btn.font
+    property font font
     property alias checkable: btn.checkable
     property alias autoRepeat: btn.autoRepeat
 
     implicitHeight: btn.implicitHeight
     implicitWidth: btn.implicitWidth
 
-    Button {
+    AbstractButton {
 
         id: btn
 
         hoverEnabled: false
 
         anchors.centerIn: parent
+
+        font: root.font
 
         width: Math.min(root.width, root.height / root.ratioHtoW)
         height: Math.min(root.height, root.width * root.ratioHtoW)
@@ -67,7 +70,7 @@ Item {
                    } else {
                        root.disabledColor
                    }
-            radius: Math.min(height, width) / 2
+            radius: root.isRounded ? Math.min(height, width) / 2 : 0
             border.width: root.borderWidth
             border.color: root.borderColor
         }

@@ -10,6 +10,7 @@ Item {
     property alias table: tableView
     property alias model: tableView.model
     property int currentIndex: -1
+    property font font
 
     signal cellClicked(int row, int col)
 
@@ -68,24 +69,17 @@ Item {
 
         interactive: tableView.rows > 4
 
-        delegate: ItemDelegate {
+        delegate: CustomItemDelegate {
+
+            inActiveRow: rowByIndex(model.index,
+                                    tableView.rows) === currentIndex
 
             implicitHeight: tableView.height / 4
             implicitWidth: tableView.width / tableView.columns
-            contentItem: Text {
-                text: model.value
 
-                color: "white"
+            text: model.value
 
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-            }
-
-            background: Rectangle {
-                visible: rowByIndex(model.index,
-                                    tableView.rows) === currentIndex
-                color: "#515151"
-            }
+            font: root.font
 
             onClicked: {
                 let curRow = rowByIndex(model.index, tableView.rows)
