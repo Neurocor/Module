@@ -40,9 +40,14 @@ Item {
         anchors.centerIn: parent
 
         font: root.font
+        padding: 5
 
-        width: Math.min(root.width, root.height / root.ratioHtoW)
-        height: Math.min(root.height, root.width * root.ratioHtoW)
+        width: Math.min(
+                   root.width - leftPadding - rightPadding,
+                   (root.height - topPadding - bottomPadding) / root.ratioHtoW)
+        height: Math.min(
+                    root.height - topPadding - bottomPadding,
+                    (root.width - leftPadding - rightPadding) * root.ratioHtoW)
 
         contentItem: CustomText {
             text: btn.text

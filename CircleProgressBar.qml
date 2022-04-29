@@ -104,29 +104,29 @@ Item {
 
         CustomTextBlock {
             id: mainCont
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.horizontalCenter: parent.horizontalCenter
-            titleText: root.titleText
-            titleColor: root.titleColor
-            titleSize: canvas.radius / 10
+            //            anchors.verticalCenter: parent.verticalCenter
+            //            anchors.horizontalCenter: parent.horizontalCenter
+            //            titleText: root.titleText
+            //            titleColor: root.titleColor
+            //            titleSize: canvas.radius / 10
 
-            value: currentValue.toFixed(1)
-            dimensionText: root.dimensionText
+            //            value: currentValue.toFixed(1)
+            //            dimensionText: root.dimensionText
         }
 
         CustomTextBlock {
             id: nextCont
-            anchors.top: mainCont.bottom
-            anchors.horizontalCenter: mainCont.horizontalCenter
+            //            anchors.top: mainCont.bottom
+            //            anchors.horizontalCenter: mainCont.horizontalCenter
 
-            titleText: "NEXT"
-            titleSize: canvas.radius / 10
-            visible: isNext
-            titleColor: foregroundColor
-            titleBold: true
+            //            titleText: "NEXT"
+            //            titleSize: canvas.radius / 10
+            //            visible: isNext
+            //            titleColor: foregroundColor
+            //            titleBold: true
 
-            valueColor: foregroundColor
-            valueBold: true
+            //            valueColor: foregroundColor
+            //            valueBold: true
         }
     }
 }

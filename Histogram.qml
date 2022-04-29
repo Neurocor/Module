@@ -3,6 +3,8 @@ import QtQuick 2.15
 Item {
     id: root
 
+    required property real maxHeight
+
     property var values: []
     property real padding: 0
     property int activeHist: -1 // -1: All enabled; 0: All Active; val: Active val Hist
@@ -12,8 +14,6 @@ Item {
     property string title
     property color titleColor: "white"
     property real titleSize: height / 3
-
-    required property real maxHeight
 
     //    visible: values.length
     Canvas {
