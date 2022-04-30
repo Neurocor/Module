@@ -8,6 +8,7 @@ GridView {
     required property int endValue
     required property int colsCount
     required property int rowsCount
+
     readonly property int elmsCount: colsCount * rowsCount
     readonly property int step: (endValue - startValue) / (elmsCount - 1)
     property real scaleVal: 1

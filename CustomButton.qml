@@ -5,7 +5,7 @@ Item {
 
     id: root
 
-    property alias text: btn.text
+    property string text
     property color textColor: "white"
 
     property real ratioHtoW: 1
@@ -34,6 +34,8 @@ Item {
     AbstractButton {
 
         id: btn
+
+        text: root.text
 
         hoverEnabled: false
 
