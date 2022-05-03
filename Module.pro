@@ -15,11 +15,12 @@ SOURCES += \
 
 DISTFILES += qmldir \
             $$OUT_PWD/plugins.qmltypes \
+            CustomTextBlock.qml
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
-                    CustomTextBlock.qml \
                     CustomButton.qml \
+                    CustomTextBlock_backup.qml \
                     Histogram.qml \
                     Prompt.qml \
                     ButtonBlock.qml \

@@ -1,10 +1,12 @@
 import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 
 Item {
     id: root
 
     property real minimumValue: 0
-    property real maximumValue: 100
+    property real maximumValue: minimumValue
     property real currentValue: 0
 
     property real nextValue: 0
@@ -13,11 +15,12 @@ Item {
 
     property color backgroundColor: "#9f9f9f"
     property color foregroundColor: "#ff4b00"
-    property color nextBorderColor: titleColor
+    property color nextBorderColor: "white"
 
     property string titleText
     property color titleColor: "white"
     property string dimensionText
+    property color dimensionColor: foregroundColor
 
     onCurrentValueChanged: {
         mainCont.valueText = root.currentValue.toFixed(1)
@@ -101,32 +104,44 @@ Item {
 
             ctx.restore()
         }
+        Column {
+            id: column
 
-        CustomTextBlock {
-            id: mainCont
-            //            anchors.verticalCenter: parent.verticalCenter
-            //            anchors.horizontalCenter: parent.horizontalCenter
-            //            titleText: root.titleText
-            //            titleColor: root.titleColor
-            //            titleSize: canvas.radius / 10
+            //            width: (canvas.radius - canvas.radiusSphere) * Math.sqrt(2)
+            //            height: width
+            anchors.centerIn: parent
 
-            //            value: currentValue.toFixed(1)
-            //            dimensionText: root.dimensionText
-        }
+            CustomTextBlock {
+                id: mainCont
 
-        CustomTextBlock {
-            id: nextCont
-            //            anchors.top: mainCont.bottom
-            //            anchors.horizontalCenter: mainCont.horizontalCenter
+                //            anchors.verticalCenter: parent.verticalCenter
+                //            anchors.horizontalCenter: parent.horizontalCenter
+                titleText: root.titleText
 
-            //            titleText: "NEXT"
-            //            titleSize: canvas.radius / 10
-            //            visible: isNext
-            //            titleColor: foregroundColor
-            //            titleBold: true
+                //            titleColor: root.titleColor
+                //            titleSize: canvas.radius / 10
+                valueText: root.currentValue.toFixed(1)
+                dimensionText: root.dimensionText
+            }
+            CustomTextBlock {
+                id: nextCont
+                //                anchors.top: mainCont.bottom
+                //                anchors.horizontalCenter: mainCont.horizontalCenter
 
-            //            valueColor: foregroundColor
-            //            valueBold: true
+                //                anchors.centerIn: parent
+                titleText: "NEXT"
+                //            titleSize: canvas.radius / 10
+                visible: root.isNext
+                //            titleColor: foregroundColor
+                //            titleBold: true
+
+                //            valueColor: foregroundColor
+                //            valueBold: true
+            }
+            CheckBox {
+
+                onCheckedChanged: root.isNext = checked
+            }
         }
     }
 }

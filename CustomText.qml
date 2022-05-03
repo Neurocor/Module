@@ -10,7 +10,7 @@ Item {
 
     property color color: "white"
     property string text
-    property alias font: txt.font
+    property font font
     property alias leftPadding: txt.leftPadding
     property alias elide: txt.elide
 
@@ -21,6 +21,8 @@ Item {
 
         text: root.text
         color: root.color
+
+        font: root.font
 
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter

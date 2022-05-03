@@ -6,14 +6,15 @@ Item {
     required property real maxHeight
 
     property var values: []
-    property real padding: 0
+    property real padding: 5
     property int activeHist: -1 // -1: All enabled; 0: All Active; val: Active val Hist
     property color enableColor: "#aeafb1"
     property color activeColor: "#ff4b00"
 
     property string title
     property color titleColor: "white"
-    property real titleSize: height / 3
+
+    property font font
 
     //    visible: values.length
     Canvas {
@@ -115,7 +116,9 @@ Item {
 
         text: title
         color: titleColor
-        font.pixelSize: height * 4 / 10
+
+        font.family: root.font.family
+        font.pixelSize: root.font ? root.font.pixelSize : height * 4 / 10
     }
 
     onActiveHistChanged: {
@@ -127,5 +130,7 @@ Item {
     }
     onValuesChanged: {
         graph.requestPaint()
+
+        //        activeHist = values.length
     }
 }

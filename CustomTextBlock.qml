@@ -1,6 +1,7 @@
 import QtQuick 2.15
+import QtQuick.Layouts 1.15
 
-Item {
+Column {
 
     id: root
 
@@ -8,32 +9,50 @@ Item {
     property string valueText
     property string dimensionText
 
-    implicitHeight: titleCont.implicitHeight + row.implicitHeight
+    property color titleColor: "white"
+    property color valueColor: titleColor
+    property color dimensionColor: titleColor
 
-    implicitWidth: Math.max(titleCont.implicitWidth, row.implicitWidth)
+    property font font
+    property font titleFont: font
+    property font valueFont: font
+    property font dimensionFont: font
 
     CustomText {
+
         id: titleCont
+
+        width: parent.width
+        height: parent.height / 4
+
+        font.family: root.titleFont.family
+        font.pixelSize: 20
+
         text: root.titleText
     }
-    Item {
 
-        id: row
+    RowLayout {
 
-        anchors.top: titleCont.bottom
+        id: rowCont
 
-        implicitHeight: Math.max(valueCont.imimplicitHeight,
-                                 dimenCont.imimplicitHeight)
-
-        implicitWidth: valueCont.implicitWidth + dimenCont.implicitWidth
+        anchors.horizontalCenter: titleCont.horizontalCenter
 
         CustomText {
 
-            id: valueCont
+            Layout.alignment: Qt.AlignVCenter
+
+            font.family: root.valueFont.family
+            font.pixelSize: titleCont.font.pixelSize * 4
+
             text: root.valueText
         }
         CustomText {
-            id: dimenCont
+
+            Layout.alignment: Qt.AlignVCenter
+
+            font.family: root.dimensionFont.family
+            font.pixelSize: titleCont.font.pixelSize * 2
+
             text: root.dimensionText
         }
     }
