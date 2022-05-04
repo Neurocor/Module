@@ -15,7 +15,8 @@ SOURCES += \
 
 DISTFILES += qmldir \
             $$OUT_PWD/plugins.qmltypes \
-            CustomTextBlock.qml
+            CustomTextBlock.qml \
+            CustomTextBlock_backup.qml
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \

@@ -20,7 +20,8 @@ Item {
     property string titleText
     property color titleColor: "white"
     property string dimensionText
-    property color dimensionColor: foregroundColor
+    property color dimensionColor: titleColor
+    property color nextColor: foregroundColor
 
     onCurrentValueChanged: {
         mainCont.valueText = root.currentValue.toFixed(1)
@@ -104,44 +105,45 @@ Item {
 
             ctx.restore()
         }
-        Column {
-            id: column
+        CustomTextBlock {
 
             //            width: (canvas.radius - canvas.radiusSphere) * Math.sqrt(2)
             //            height: width
             anchors.centerIn: parent
 
-            CustomTextBlock {
-                id: mainCont
+            id: mainCont
 
-                //            anchors.verticalCenter: parent.verticalCenter
-                //            anchors.horizontalCenter: parent.horizontalCenter
-                titleText: root.titleText
+            //            anchors.verticalCenter: parent.verticalCenter
+            //            anchors.horizontalCenter: parent.horizontalCenter
+            titleText: root.titleText
 
-                //            titleColor: root.titleColor
-                //            titleSize: canvas.radius / 10
-                valueText: root.currentValue.toFixed(1)
-                dimensionText: root.dimensionText
-            }
-            CustomTextBlock {
-                id: nextCont
-                //                anchors.top: mainCont.bottom
-                //                anchors.horizontalCenter: mainCont.horizontalCenter
+            //            titleColor: root.titleColor
+            //            titleSize: canvas.radius / 10
+            valueText: root.currentValue.toFixed(1)
+            dimensionText: root.dimensionText
+        }
+        CustomTextBlock {
+            id: nextCont
+            anchors.top: mainCont.bottom
+            anchors.horizontalCenter: mainCont.horizontalCenter
 
-                //                anchors.centerIn: parent
-                titleText: "NEXT"
-                //            titleSize: canvas.radius / 10
-                visible: root.isNext
-                //            titleColor: foregroundColor
-                //            titleBold: true
+            //                anchors.centerIn: parent
+            titleText: "NEXT"
+            //            titleSize: canvas.radius / 10
+            visible: root.isNext
+            titleColor: root.nextColor
 
-                //            valueColor: foregroundColor
-                //            valueBold: true
-            }
-            CheckBox {
+            valueText: root.nextValue.toFixed(1)
 
-                onCheckedChanged: root.isNext = checked
-            }
+            //            titleBold: true
+
+            //            valueBold: true
+        }
+        CheckBox {
+
+            anchors.top: nextCont.bottom
+
+            onCheckedChanged: root.isNext = checked
         }
     }
 }

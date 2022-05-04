@@ -18,6 +18,8 @@ Column {
     property font valueFont: font
     property font dimensionFont: font
 
+    signal clicked
+
     CustomText {
 
         id: titleCont
@@ -27,6 +29,8 @@ Column {
 
         font.family: root.titleFont.family
         font.pixelSize: 20
+
+        color: root.titleColor
 
         text: root.titleText
     }
@@ -45,6 +49,8 @@ Column {
             font.pixelSize: titleCont.font.pixelSize * 4
 
             text: root.valueText
+
+            color: root.valueColor
         }
         CustomText {
 
@@ -54,6 +60,8 @@ Column {
             font.pixelSize: titleCont.font.pixelSize * 2
 
             text: root.dimensionText
+
+            color: root.dimensionColor
         }
     }
 }
