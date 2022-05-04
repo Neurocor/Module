@@ -16,9 +16,10 @@ GridView {
 
     property font font
 
+    property real currentValue: startValue
+
     signal buttonClicked(int value)
 
-    //    property bool disableWhenClicked: false
     cellWidth: width / colsCount
     cellHeight: height / rowsCount
     model: elmsCount
@@ -27,15 +28,12 @@ GridView {
         height: root.cellHeight
         CustomButton {
             id: btn
-            //            width: Math.min(parent.width * root.scaleVal,
-            //                            parent.height * root.scaleVal)
-            //            height: Math.min(parent.width * root.scaleVal,
-            //                             parent.height * root.scaleVal)
+
             width: Math.min(parent.width, parent.height) * root.scaleVal
             height: width
             anchors.centerIn: parent
             text: index * root.step
-            enabled: root.enabled /*&& model.index !== currentIndex*/
+            enabled: root.enabled && (parseFloat(text) !== currentValue)
 
             font.family: root.font.family
             font.pixelSize: root.font.pixelSize

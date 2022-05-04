@@ -18,7 +18,8 @@ Item {
     //    property color disabledColor: "#2f2f2f"
     property color disabledColor: "transparent"
     property color clickedColor: "#00729D"
-    //    property color clickedColor: "#ff4b00"
+    //    property color enabledColor: "#ff4b00" : StopBTN
+    //    property color clickedColor: "#cb4b00" : StopBTN
     property color checkedColor: enabledColor
 
     signal checkedChanged
