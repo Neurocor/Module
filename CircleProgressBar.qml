@@ -17,6 +17,11 @@ Item {
     property color foregroundColor: "#ff4b00"
     property color nextBorderColor: "white"
 
+    property font font
+    property font titleFont: font
+    property font valueFont: font
+    property font dimensionFont: font
+
     property string titleText
     property color titleColor: "white"
     property string dimensionText
@@ -107,50 +112,33 @@ Item {
         }
         CustomTextBlock {
 
-            //            width: (canvas.radius - canvas.radiusSphere) * Math.sqrt(2)
-            //            height: width
             anchors.centerIn: parent
 
             id: mainCont
 
-            //            anchors.verticalCenter: parent.verticalCenter
-            //            anchors.horizontalCenter: parent.horizontalCenter
             titleText: root.titleText
 
-            //            titleColor: root.titleColor
-            //            titleSize: canvas.radius / 10
             valueText: root.currentValue.toFixed(1)
             dimensionText: root.dimensionText
+
+            titleFont: root.titleFont
+            valueFont: root.valueFont
+            dimensionFont: root.dimensionFont
         }
         CustomTextBlock {
             id: nextCont
             anchors.top: mainCont.bottom
             anchors.horizontalCenter: mainCont.horizontalCenter
 
-            //                anchors.centerIn: parent
-            titleText: "NEXT"
-            //            titleSize: canvas.radius / 10
+            titleText: qsTr("NEXT")
             visible: root.isNext
             titleColor: root.nextColor
 
             valueText: root.nextValue.toFixed(1)
 
-            //            titleBold: true
-
-            //            valueBold: true
-        }
-        CheckBox {
-
-            anchors.top: nextCont.bottom
-
-            onCheckedChanged: root.isNext = checked
+            titleFont: root.titleFont
+            valueFont: root.valueFont
+            dimensionFont: root.dimensionFont
         }
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.6600000262260437;height:480;width:640}
-}
-##^##*/
-

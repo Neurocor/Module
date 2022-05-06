@@ -4,7 +4,7 @@ TARGET = moduleplugin
 TARGET = $$qt5LibraryTarget($$TARGET)
 
 QML_IMPORT_NAME = Module
-QML_IMPORT_VERSION = 1
+QML_IMPORT_MAJOR_VERSION = 1
 
 
 HEADERS += \
@@ -15,8 +15,7 @@ SOURCES += \
 
 DISTFILES += qmldir \
             $$OUT_PWD/plugins.qmltypes \
-            CustomTextBlock.qml \
-            CustomTextBlock_backup.qml
+
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
@@ -29,9 +28,18 @@ else: DISTFILES += CustomText.qml \
                     Table.qml \
                     CustomSlider.qml \
                     CustomItemDelegate.qml \
+                    CustomTextBlock.qml \
                     CustomSlider.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
 
-#TRANSLATIONS += module_ru.qm
+lupdate_only {
+    SOURCES += $$DISTFILES
+}
+
+TRANSLATIONS += module_ru.ts
+
+
+RESOURCES += \
+    resources/res.qrc
