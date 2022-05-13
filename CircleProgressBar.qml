@@ -35,7 +35,7 @@ Item {
 
     onNextValueChanged: {
 
-        nextCont.value = root.nextValue.toFixed(1)
+        nextCont.valueText = root.nextValue.toFixed(1)
         canvas.requestPaint()
     }
 
