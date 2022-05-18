@@ -12,3 +12,4 @@ Table 1.0 Table.qml
 CustomSlider 1.0 CustomSlider.qml
 CustomItemDelegate 1.0 CustomItemDelegate.qml
 CustomRadioDelegate 1.0 CustomRadioDelegate.qml
+CommonColumn 1.0 CommonColumn.qml

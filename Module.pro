@@ -14,7 +14,7 @@ SOURCES += \
     moduleplugin.cpp
 
 DISTFILES += qmldir \
-            $$OUT_PWD/plugins.qmltypes \
+            $$OUT_PWD/plugins.qmltypes
 
 
 unix:!macx: DISTFILES += *.qml
@@ -29,7 +29,8 @@ else: DISTFILES += CustomText.qml \
                     CustomSlider.qml \
                     CustomItemDelegate.qml \
                     CustomTextBlock.qml \
-                    CustomSlider.qml
+                    CustomSlider.qml \
+                    CommonColumn.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
