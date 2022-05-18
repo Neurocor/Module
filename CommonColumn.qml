@@ -11,6 +11,10 @@ Item {
     property string title
     property string dimension
 
+    property alias topContainer: topCont
+    property alias midContainer: midCont
+    property alias botContainer: botCont
+
     property alias minusBtn: mnsBtn
     property alias plusBtn: plsBtn
 
@@ -19,18 +23,17 @@ Item {
         anchors.fill: parent
         scale: 0.8
 
-        Item {
+        Control {
             id: topCont
             width: parent.width
             height: parent.height * 0.3
         }
-        Item {
+        Control {
             id: midCont
             width: parent.width
             height: parent.height * 0.5
 
-            CircleProgressBar {
-                anchors.fill: parent
+            contentItem: CircleProgressBar {
                 minimumValue: root.minValue
                 maximumValue: root.maxValue
                 currentValue: root.value
@@ -39,34 +42,40 @@ Item {
                 dimensionText: root.dimension
             }
         }
-        Row {
+
+        Control {
             id: botCont
             width: parent.width
             height: parent.height * 0.2
 
-            CustomButton {
-                id: mnsBtn
-                width: parent.width / 2
-                height: parent.height
-                ratioHtoW: 0.65
+            contentItem: Row {
 
-                enabled: root.value > root.minValue
+                id: btnsRow
 
-                autoRepeat: true
+                CustomButton {
+                    id: mnsBtn
+                    width: parent.width / 2
+                    height: parent.height
+                    ratioHtoW: 0.65
 
-                text: "-"
-            }
-            CustomButton {
-                id: plsBtn
-                width: parent.width / 2
-                height: parent.height
-                ratioHtoW: 0.65
+                    enabled: root.value > root.minValue
 
-                enabled: root.value < root.maxValue
+                    autoRepeat: true
 
-                autoRepeat: true
+                    text: "-"
+                }
+                CustomButton {
+                    id: plsBtn
+                    width: parent.width / 2
+                    height: parent.height
+                    ratioHtoW: 0.65
 
-                text: "+"
+                    enabled: root.value < root.maxValue
+
+                    autoRepeat: true
+
+                    text: "+"
+                }
             }
         }
     }
