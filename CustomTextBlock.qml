@@ -14,9 +14,9 @@ Column {
     property color dimensionColor: titleColor
 
     property font font
-    property font titleFont: font
-    property font valueFont: font
-    property font dimensionFont: font
+    property int titleFontSize: font.pixelSize
+    property int valueFontSize: titleFontSize * 4
+    property int dimensionFontSize: titleFontSize * 2
 
     signal clicked
 
@@ -27,43 +27,60 @@ Column {
         width: parent.width
         height: parent.height / 4
 
-        font.family: root.titleFont.family
-        font.pixelSize: 20
+        font.family: root.font.family
+        font.pixelSize: root.titleFontSize
 
         color: root.titleColor
 
         text: root.titleText
     }
 
-    RowLayout {
-
-        id: rowCont
+    CustomTextRow {
+        id: valCont
 
         anchors.horizontalCenter: titleCont.horizontalCenter
 
-        CustomText {
+        font.family: root.font.family
 
-            Layout.alignment: Qt.AlignVCenter
+        valueFontSize: root.valueFontSize
+        dimensionFontSize: root.dimensionFontSize
 
-            font.family: root.valueFont.family
-            font.pixelSize: titleCont.font.pixelSize * 4
+        valueColor: root.valueColor
+        dimensionColor: root.dimensionColor
 
-            text: root.valueText
-
-            color: root.valueColor
-        }
-        CustomText {
-
-            Layout.alignment: Qt.AlignVCenter
-
-            font.family: root.dimensionFont.family
-            font.pixelSize: titleCont.font.pixelSize * 2
-
-            text: root.dimensionText
-
-            color: root.dimensionColor
-        }
+        valueText: root.valueText
+        dimensionText: root.dimensionText
     }
+
+    //    RowLayout {
+
+    //        id: rowCont
+
+    //        anchors.horizontalCenter: titleCont.horizontalCenter
+
+    //        CustomText {
+
+    //            Layout.alignment: Qt.AlignVCenter
+
+    //            font.family: root.valueFont.family
+    //            font.pixelSize: root.valueFont.pixelSize
+
+    //            text: root.valueText
+
+    //            color: root.valueColor
+    //        }
+    //        CustomText {
+
+    //            Layout.alignment: Qt.AlignVCenter
+
+    //            font.family: root.dimensionFont.family
+    //            font.pixelSize: root.dimensionFont.pixelSize
+
+    //            text: root.dimensionText
+
+    //            color: root.dimensionColor
+    //        }
+    //    }
 }
 
 /*##^##

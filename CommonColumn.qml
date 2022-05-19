@@ -18,6 +18,8 @@ Item {
     property alias minusBtn: mnsBtn
     property alias plusBtn: plsBtn
 
+    property font font
+
     Column {
         id: lcCont
         anchors.fill: parent
@@ -40,6 +42,9 @@ Item {
 
                 titleText: root.title
                 dimensionText: root.dimension
+
+                font.family: root.font
+                font.pixelSize: 24
             }
         }
 
@@ -58,6 +63,9 @@ Item {
                     height: parent.height
                     ratioHtoW: 0.65
 
+                    font.family: root.font
+
+                    font.pixelSize: 48
                     enabled: root.value > root.minValue
 
                     autoRepeat: true
@@ -69,6 +77,10 @@ Item {
                     width: parent.width / 2
                     height: parent.height
                     ratioHtoW: 0.65
+
+                    font.family: root.font
+
+                    font.pixelSize: 48
 
                     enabled: root.value < root.maxValue
 

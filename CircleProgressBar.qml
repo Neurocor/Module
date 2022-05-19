@@ -7,9 +7,9 @@ Item {
 
     property real minimumValue: 0
     property real maximumValue: minimumValue
-    property real currentValue: 0
+    property real currentValue: minimumValue
 
-    property real nextValue: 0
+    property real nextValue: minimumValue
 
     property bool isNext: false
 
@@ -18,9 +18,9 @@ Item {
     property color nextBorderColor: "white"
 
     property font font
-    property font titleFont: font
-    property font valueFont: font
-    property font dimensionFont: font
+    property int titleFontSize: font.pixelSize
+    property int valueFontSize: titleFontSize * 4
+    property int dimensionFontSize: titleFontSize * 2
 
     property string titleText
     property color titleColor: "white"
@@ -121,9 +121,14 @@ Item {
             valueText: root.currentValue.toFixed(1)
             dimensionText: root.dimensionText
 
-            titleFont: root.titleFont
-            valueFont: root.valueFont
-            dimensionFont: root.dimensionFont
+            font.family: root.font
+            titleFontSize: root.titleFontSize
+            valueFontSize: root.valueFontSize
+            dimensionFontSize: root.dimensionFontSize
+
+            //            titleFont: root.titleFont
+            //            valueFont: root.valueFont
+            //            dimensionFont: root.dimensionFont
         }
         CustomTextBlock {
             id: nextCont
@@ -136,9 +141,11 @@ Item {
 
             valueText: root.nextValue.toFixed(1)
 
-            titleFont: root.titleFont
-            valueFont: root.valueFont
-            dimensionFont: root.dimensionFont
+            font.family: root.font
+
+            //            titleFont: root.titleFont
+            //            valueFont: root.valueFont
+            //            dimensionFont: root.dimensionFont
         }
     }
 }
