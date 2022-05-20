@@ -6,6 +6,7 @@ Slider {
 
     property color handleColor: "#ff4b00"
     property color disableColor: "#2f2f2f"
+    property color borderDisabledColor: "#5f5f5f"
     property color fillColor: handleColor
     property color railColor: "#9f9f9f"
 
@@ -47,6 +48,6 @@ Slider {
         implicitHeight: implicitWidth
         radius: height / 2
         color: enabled ? root.handleColor : root.disableColor
-        border.color: "white"
+        border.color: enabled ? "white" : root.borderDisabledColor
     }
 }

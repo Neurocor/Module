@@ -9,6 +9,8 @@ Item {
     implicitWidth: txt.implicitWidth
 
     property color color: "white"
+    property color enabledColor: color
+    property color disabledColor: "#5f5f5f"
     property string text
     property font font
     property alias leftPadding: txt.leftPadding
@@ -20,7 +22,7 @@ Item {
         anchors.centerIn: parent
 
         text: root.text
-        color: root.color
+        color: enabled ? root.enabledColor : root.disabledColor
 
         font: root.font
 

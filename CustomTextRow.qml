@@ -12,7 +12,7 @@ Item {
     property string dimensionText
 
     property color valueColor: "white"
-    property color dimensionColor: valueColor
+    property color dimensionColor: "#aeafb1"
 
     property font font
     property int valueFontSize: font.pixelSize

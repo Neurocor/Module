@@ -11,7 +11,7 @@ Column {
 
     property color titleColor: "white"
     property color valueColor: titleColor
-    property color dimensionColor: titleColor
+    property color dimensionColor: "#aeafb1"
 
     property font font
     property int titleFontSize: font.pixelSize

@@ -6,6 +6,9 @@ RadioDelegate {
     id: root
 
     property color textColor: "white"
+    property color outerBorderColor: textColor
+    property color outerBorderEnabledColor: outerBorderColor
+    property color outerBorderDisabledColor: "#5f5f5f"
     property color checkedColor: "#0085b8"
 
     LayoutMirroring.enabled: true
@@ -29,7 +32,7 @@ RadioDelegate {
         y: (root.height - height) / 2
         radius: height / 2
         color: "transparent"
-        border.color: "white"
+        border.color: enabled ? root.outerBorderEnabledColor : root.outerBorderDisabledColor
 
         Rectangle {
 
@@ -47,4 +50,7 @@ RadioDelegate {
         visible: root.down || root.highlighted
         color: "#515151"
     }
+
+    onEnabledChanged: if (!enabled)
+                          checked = false
 }
