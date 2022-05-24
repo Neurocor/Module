@@ -8,6 +8,9 @@ Item {
     property real maxValue
     property real value
 
+    property bool hasNextValue
+    property real nextValue
+
     property string title
     property string dimension
 
@@ -39,6 +42,9 @@ Item {
                 minimumValue: root.minValue
                 maximumValue: root.maxValue
                 currentValue: root.value
+
+                isNext: root.hasNextValue
+                nextValue: root.nextValue
 
                 titleText: root.title
                 dimensionText: root.dimension

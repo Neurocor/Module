@@ -142,6 +142,8 @@ Item {
             valueText: root.nextValue.toFixed(1)
 
             font.family: root.font
+            titleFontSize: root.titleFontSize
+            valueFontSize: root.valueFontSize
 
             //            titleFont: root.titleFont
             //            valueFont: root.valueFont

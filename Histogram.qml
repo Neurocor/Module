@@ -7,7 +7,7 @@ Item {
 
     property var values: []
     property real padding: 5
-    property int activeHist: -1 // -1: All enabled; 0: All Active; val: Active val Hist
+    property int activeHist: -1 // -1: All enabled; val: Active val Hist; len: All Active
     property color enableColor: "#aeafb1"
     property color activeColor: "#ff4b00"
 
@@ -118,7 +118,7 @@ Item {
         color: titleColor
 
         font.family: root.font.family
-        font.pixelSize: root.font ? root.font.pixelSize : height * 4 / 10
+        font.pixelSize: root.font.pixelSize
     }
 
     onActiveHistChanged: {

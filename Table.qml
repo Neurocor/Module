@@ -10,6 +10,7 @@ Item {
     property alias table: tableView
     property alias model: tableView.model
     property int currentIndex: -1
+    property var values
     property font font
 
     signal cellClicked(int row, int col)
@@ -72,7 +73,7 @@ Item {
         delegate: CustomItemDelegate {
 
             inActiveRow: rowByIndex(model.index,
-                                    tableView.rows) === currentIndex
+                                    tableView.rows) === root.currentIndex
 
             implicitHeight: tableView.height / 4
             implicitWidth: tableView.width / tableView.columns
@@ -82,11 +83,11 @@ Item {
             font: root.font
 
             onClicked: {
-                let curRow = rowByIndex(model.index, tableView.rows)
-                let curCol = colByIndex(model.index, tableView.rows)
+                const curRow = rowByIndex(model.index, tableView.rows)
+                const curCol = colByIndex(model.index, tableView.rows)
                 cellClicked(curRow, curCol)
 
-                currentIndex = curRow
+                //                root.values = []
             }
         }
     }
