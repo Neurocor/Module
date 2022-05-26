@@ -28,17 +28,6 @@ Item {
     property color dimensionColor: titleColor
     property color nextColor: foregroundColor
 
-    onCurrentValueChanged: {
-        mainCont.valueText = root.currentValue.toFixed(1)
-        canvas.requestPaint()
-    }
-
-    onNextValueChanged: {
-
-        nextCont.valueText = root.nextValue.toFixed(1)
-        canvas.requestPaint()
-    }
-
     Canvas {
         id: canvas
         width: Math.min(parent.width, parent.height)
@@ -149,5 +138,20 @@ Item {
             //            valueFont: root.valueFont
             //            dimensionFont: root.dimensionFont
         }
+    }
+
+    onCurrentValueChanged: {
+        mainCont.valueText = root.currentValue.toFixed(1)
+        canvas.requestPaint()
+    }
+
+    onNextValueChanged: {
+
+        nextCont.valueText = root.nextValue.toFixed(1)
+        canvas.requestPaint()
+    }
+    onIsNextChanged: {
+
+        canvas.requestPaint()
     }
 }
