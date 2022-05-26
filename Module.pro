@@ -14,9 +14,7 @@ SOURCES += \
     moduleplugin.cpp
 
 DISTFILES += qmldir \
-            $$OUT_PWD/plugins.qmltypes \
-            FlipableTextBlock.qml
-
+            $$OUT_PWD/plugins.qmltypes
 
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
@@ -32,7 +30,8 @@ else: DISTFILES += CustomText.qml \
                     CustomTextBlock.qml \
                     CustomSlider.qml \
                     CommonColumn.qml \
-                    CustomTextRow.qml
+                    CustomTextRow.qml \
+                    FlipableTextBlock.qml
 
 qmlFiles.files = $$DISTFILES
 qmlFiles.path = $$DESTDIR
