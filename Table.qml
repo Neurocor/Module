@@ -23,11 +23,11 @@ Item {
                         verticalHeader.implicitHeight,
                         tableView.implicitHeight) + horizontalHeader.implicitHeight
 
-    function rowByIndex(index, rowCount) {
-        return parseInt(index % rowCount)
+    function rowByIndex(index) {
+        return parseInt(index % tableView.rows)
     }
-    function colByIndex(index, rowCount) {
-        return parseInt(index / rowCount)
+    function colByIndex(index) {
+        return parseInt(index / tableView.rows)
     }
 
     HorizontalHeaderView {
@@ -83,8 +83,8 @@ Item {
             font: root.font
 
             onClicked: {
-                const curRow = rowByIndex(model.index, tableView.rows)
-                const curCol = colByIndex(model.index, tableView.rows)
+                const curRow = rowByIndex(model.index)
+                const curCol = colByIndex(model.index)
                 cellClicked(curRow, curCol)
 
                 //                root.values = []
