@@ -19,9 +19,8 @@ DISTFILES += qmldir \
 unix:!macx: DISTFILES += *.qml
 else: DISTFILES += CustomText.qml \
                     CustomButton.qml \
-                    CustomTextBlock_backup.qml \
+                    CustomRadioDelegate.qml \
                     Histogram.qml \
-                    Prompt.qml \
                     ButtonBlock.qml \
                     CircleProgressBar.qml \
                     Table.qml \
